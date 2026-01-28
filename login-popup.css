@@ -1,0 +1,179 @@
+/* Style for the login pop-up */
+.login-popup {
+    display: none;
+    /* Initially hidden */
+    position: fixed;
+    /* Position it fixed to the viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    z-index: 9999;
+    /* Ensure it appears above other content */
+}
+
+.login-popup-content {
+    background-color: white;
+    width: 600px;
+    /* Larger width */
+    height: 500px;
+    /* Larger height */
+    padding: 20px;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center the pop-up horizontally and vertically */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.logo {
+    width: 150px;
+    /* Larger logo width */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    /* Center the logo */
+}
+
+.company-name {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.login-form input[type="submit"] {
+    background-color: #4fb6ea;
+    color: black;
+    cursor: pointer;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.signup-link span {
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+/* Style for the registration pop-up */
+#registerPopup {
+    display: none;
+    /* Initially hidden */
+}
+
+/* Style for the registration pop-up content */
+#registerPopup .login-popup-content {
+    background-color: white;
+    width: 600px;
+    /* Larger width */
+    height: 650px;
+    /* Increased height */
+    padding: 20px;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center the pop-up horizontally and vertically */
+}
+
+/* Additional styles for registration pop-up */
+#registerPopup .company-name {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#registerPopup .login-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#registerPopup .login-form input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #030303;
+}
+
+#registerPopup .login-form input[type="submit"] {
+    background-color: #4fb6ea;
+    color: black;
+    cursor: pointer;
+}
+
+#registerPopup .signup-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#registerPopup .signup-link span {
+    margin-right: 5px;
+}
+
+
+/* CSS for the eye icon */
+.password-input-container {
+    position: relative;
+}
+
+.password-input-container input[type="password"] {
+    padding-right: 30px;
+    /* Add padding to make space for the eye icon */
+}
+
+.password-input-container button {
+    position: absolute;
+    top: 40%;
+    right: 5px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Styles for the users display table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}

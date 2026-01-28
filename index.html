@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IS3</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Linking Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="login-popup.css">
+</head>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<body>
+  <div class="header">
+    <div>
+      <img src="logo.png" alt="" style="width: 100px; height: auto;" /> &nbsp;&nbsp;
+    </div>
+    <!-- Company Name and Tagline -->
+    <div>
+      <div class="company-name">IS3</div>
+      <div class="tagline">WE CARE EVERY FABRIC!!!</div>
+    </div>
+    <!-- Navigation is mostly unorder list -->
+    <div class="header-links">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#service" class="nav-link">Service</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#work" class="nav-link">Work</a></li>
+        <li><a href="#booking" class="nav-link">Book Now</a></li>
+        <li><a href="#contact" class="nav-link">Contact Us</a></li>
+      </ul>
+    </div>
+    <!-- Login and Register Buttons -->
+    <div class="header-buttons">
+      <button onclick="showLoginPopup()">Login</button> &nbsp;
+      <button id="registerButton">Register</button>
+    </div>
+  </div>
+
+
+
+  <!-- Login Popup -->
+  <div id="loginPopup" class="login-popup">
+    <div class="login-popup-content">
+      <span class="close" onclick="hideLoginPopup()">&times;</span>
+      <img src="logo.png" alt="IS3 Logo" class="logo">
+      <h1 class="company-name">IS3</h1>
+      <h2 class="login-heading">Login</h2>
+      <form id="loginForm" action="login.php" method="POST" class="login-form" onsubmit="return loginFormSubmit()">
+        <input type="email" name="email" placeholder="Email" required>
+        <div class="password-input-container">
+          <input type="password" name="password" id="password" placeholder="Password" required>
+          <button type="button" id="togglePassword" onclick="togglePasswordVisibility()">
+            <i class="fas fa-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+        <input type="submit" id="loginSubmitButton" value="Submit">
+      </form>
+      <div class="signup-link">
+        <span>Don't have an account?</span>
+        <a href="#" id="signupLinkInLogin">Register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Popup Ends-->
+
+
+
+
+  <!-- Register Popup Starts -->
+  <div id="registerPopup" class="login-popup">
+    <div class="login-popup-content">
+      <span class="close" onclick="hideRegisterPopup()">&times;</span>
+      <img src="logo.png" alt="IS3 Logo" class="logo">
+      <h1 class="company-name">IS3</h1>
+      <h2 class="login-heading">Register</h2>
+      <form id="registerForm" class="login-form">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <div class="password-input-container">
+          <input type="password" name="password" placeholder="Password" required>
+          <button type="button" id="togglePassword" onclick="togglePasswordVisibility()">
+            <i class="fas fa-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+        <input type="tel" name="phone" placeholder="Phone Number" required>
+        <input type="submit" id="registerSubmitButton" value="Submit">
+      </form>
+      <div class="signup-link">
+        <span>Already have an account?</span>
+        <a href="#" id="loginLinkInSignup">Login</a>
+      </div>
+    </div>
+  </div>
+  <!-- Register Popup Ends-->
+
+
+
+  <!--displaying the alert message-->
+  <script>
+    $(document).ready(function () {
+      // Handle the registration form submission
+      $('#registerForm').on('submit', function (e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        $.ajax({
+          type: 'POST',
+          url: 'register.php', // The URL of the register.php file
+          data: $(this).serialize(), // Serialize the form data
+          dataType: 'json', // Expect a JSON response
+          success: function (response) {
+            // Display the message based on the response
+            if (response.status === 'success') {
+              alert(response.message); // Show success message
+              hideRegisterPopup(); // Optionally hide the popup
+            } else {
+              alert(response.message); // Show error message
+            }
+          },
+          error: function () {
+            alert('An error occurred while processing your request.'); // Show a generic error
+          }
+        });
+      });
+    });
+  </script>
+  <!--displaying the alert message-->
+
+
+
+
+
+
+  <!-- Home Section Starts -->
+  <div class="hero" id="home">
+    <div class="container">
+      <div class="hero-desc">
+        <h1>Get your Laundry and dry cleaning done within 24hrs</h1>
+        <p>Just <b>smile</b> & <b>relax</b>, We'll do the dirty work.</p>
+        <a href="#booking" class="flicker-animation">Book Now</a>
+      </div>
+      <img src="man-in-hero.png" alt="" />
+    </div>
+  </div>
+
+  <!-- Home Section Ends -->
+
+
+
+
+
+
+
+
+  <!-- Laundry Shops Section Starts -->
+  <div class="shops main-spacing" style="background-color: white">
+    <div class="container">
+      <div class="col-md-6">
+        <h1>Laundry Shops</h1>
+      </div>
+      <div class="col-md-6 text-right" style="margin-left: 1100px;">
+        <div class="arrow-circle">
+          <a class="prev" onclick="plusSlides(-1)"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="arrow-circle">
+          <a class="next" onclick="plusSlides(1)"><i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="slideshow-container">
+        <div class="row">
+          <!-- Shop Box 1 -->
+          <div class="shop fade" id="dropsBox">
+            <div class="shop-content">
+              <img src="laundry shops\drops.jpg" alt="Shop 1">
+              <h1>Drops</h1>
+              <div class="shop-info">
+                <div class="ratings">
+                  <i class="fas fa-star"></i> 4.8 (108 Ratings)
+                </div>
+                <div class="services">
+                  <i class="fas fa-tshirt"></i> Wash&Iron, Wash&Fold, Dry Cleaners
+                </div>
+                <div class="location">
+                  <i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Shop Box 2 -->
+          <div class="shop fade" id="tumbledry-box" onmouseover="showPopup('tumbledry')"
+            onmouseout="closePopup('tumbledry')">
+            <div class="shop-content">
+              <img src="laundry shops\tumbledry.jpg" alt="Shop 2">
+              <h1>Tumbledry</h1>
+              <div class="shop-info">
+                <div class="ratings">
+                  <i class="fas fa-star"></i> 4.2 (32 Ratings)
+                </div>
+                <div class="services">
+                  <i class="fas fa-tshirt"></i> Washing, Steam Ironing, Dry Cleaning,......
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Shop Box 3 -->
+          <div class="shop fade" id="fabrico-box" onmouseover="showPopup('fabrico')" onmouseout="closePopup('fabrico')">
+            <div class="shop-content">
+              <img src="laundry shops\fabrico.jpg" alt="Shop 3">
+              <h1>Fabrico</h1>
+              <div class="shop-info">
+                <div class="ratings">
+                  <i class="fas fa-star"></i> 4.7 (26 Ratings)
+                </div>
+                <div class="services">
+                  <i class="fas fa-tshirt"></i> Washing, Steam Ironing, Shoe Cleaning,......
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Shop Box 1 -->
+          <div class="shop fade" id="dropsBox">
+            <div class="shop-content">
+              <img src="laundry shops\peacock.png" alt="Shop 1">
+              <h1>Peacock</h1>
+              <div class="shop-info">
+                <div class="ratings">
+                  <i class="fas fa-star"></i> 4.8 (108 Ratings)
+                </div>
+                <div class="services">
+                  <i class="fas fa-tshirt"></i> Wash&Iron, Wash&Fold, Dry Cleaners
+                </div>
+                <div class="location">'-'
+                  <i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Shop Box 2 -->
+          <div class="shop fade" id="tumbledry-box" onmouseover="showPopup('tumbledry')"
+            onmouseout="closePopup('tumbledry')">
+            <div class="shop-content">
+              <img src="laundry shops\tumbledry.jpg" alt="Shop 2">
+              <h1>shop5</h1>
+              <div class="shop-info">
+                <div class="ratings">
+                  <i class="fas fa-star"></i> 4.2 (32 Ratings)
+                </div>
+                <div class="services">
+                  <i class="fas fa-tshirt"></i> Washing, Steam Ironing, Dry Cleaning,......
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Shop Box 3 -->
+          <div class="shop fade" id="fabrico-box" onmouseover="showPopup('fabrico')" onmouseout="closePopup('fabrico')">
+            <div class="shop-content">
+              <img src="laundry shops\fabrico.jpg" alt="Shop 3">
+              <h1>shop6</h1>
+              <div class="shop-info">
+                <div class="ratings">
+                  <i class="fas fa-star"></i> 4.7 (26 Ratings)
+                </div>
+                <div class="services">
+                  <i class="fas fa-tshirt"></i> Washing, Steam Ironing, Shoe Cleaning,......
+                  <div class="location">
+                    <i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Shops Section Ends -->
+
+
+
+  <!-- Popup for Drops Starts -->
+  <div id="drops-popup" class="popup">
+
+    <h2>Drops Laundry Service</h2><br>
+    <div class="details-row">
+      <p><strong>Services:</strong> Wash&Iron, Wash&Fold, Dry Cleaners</p>
+    </div>
+    <div class="details-row">
+      <div><i class="fas fa-star"></i> 4.8 (108 Ratings)</div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div><i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore</div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div><strong>Year of Establishment:</strong> 01-2023</div>
+    </div>
+  </div>
+  <!-- Popup for Drops Ends -->
+
+
+
+  <!-- Popup for Tumbledry Starts -->
+  <div id="tumbledry-popup" class="popup">
+    <h2>Tumbledry Laundry Service</h2><br>
+    <div class="details-row">
+      <p><strong>Services:</strong> Washing, Steam Ironing, Dry Cleaning, Shoe Cleaning</p>
+    </div>
+    <div class="details-row">
+      <div><i class="fas fa-star"></i> 4.2 (32 Ratings)</div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div><i class="fas fa-map-marker-alt"></i>Saravanampatti, Coimbatore</div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div><strong>Year of Establishment:</strong> 01-2023</div>
+    </div>
+  </div>
+  <!-- Popup for Tumbledry Ends -->
+
+  <!-- Popup for Fabrico Starts -->
+  <div id="fabrico-popup" class="popup">
+
+    <h2>Fabrico Laundry Service</h2><br>
+    <div class="details-row">
+      <p><strong>Services:</strong> Washing, Steam Ironing, Dry Cleaning, Shoe Cleaning</p>
+    </div>
+    <div class="details-row">
+      <div><i class="fas fa-star"></i> 4.7 (26 Ratings)</div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div><i class="fas fa-map-marker-alt"></i> Saravanampatti, Coimbatore</div>&nbsp;&nbsp;&nbsp;&nbsp;
+      <div><strong>Year of Establishment:</strong> 01-2023</div>
+    </div>
+  </div>
+  <!-- Popup for Fabrico Ends -->
+
+
+
+
+
+
+
+
+  <!-- About Us Section -->
+
+  <div class="about-us main-spacing" style="background-color: #aedcf3;" id="about">
+    <div class="container" style="display: flex;">
+      <div class="column" style="flex: 1;">
+        <h1>About Us</h1><br>
+        <h4><strong>IS3</strong> is a laundry service aggregator. We provide access to nearby laundry services, allowing
+          you to
+          select your preferred laundry shops through us. We pick up your clothes, get them washed at your chosen shop,
+          and
+          deliver them to you on time. With IS3, you can forget about worrying about laundry!</h4>
+      </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="column" style="flex: 1;">
+        <!-- Replace the buttons with an image -->
+        <img src="about.jpg" alt="" style="width: 400px; height: auto;" />
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- About Us Section Ends -->
+
+
+
+
+
+
+
+
+  <!-- Service Starts -->
+  <div class="how-it-works" id="service">
+    <div class="container">
+      <h1>Services</h1>
+      <p>Look at all the services you want.....</p>
+      <div class="navigation-container">
+        <div class="navigation">
+          <span class="prev" onclick="prevSlideServices()"><i class="fas fa-arrow-left"></i></span>
+          <span class="next" onclick="nextSlideServices()"><i class="fas fa-arrow-right"></i></span>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="card">
+          <img src="services\laundry.png" alt="" style="width: 60px; height: 60px;" />
+          <h1>Laundry</h1>
+          <p>
+            Enjoy the ultimately washed, dried, folded clothes, ensuring utmost quality
+          </p>
+        </div>
+        <div class="card">
+          <img src="services\dry cleaning.png" alt="" />
+          <h1>Dry Cleaning</h1>
+          <p>
+            You can enjoy the elegance of your clothes through our dry cleaning service.
+          </p>
+        </div>
+        <div class="card">
+          <img src="services\premium washing.png" alt="" />
+          <h1>Premium Washing</h1>
+          <p>
+            Get your clothes washed quickly with our premium wash service.
+          </p>
+        </div>
+
+        <div class="card">
+          <img src="services\laundry.png" alt="" style="width: 60px; height: 60px;" />
+          <h1>Shoe Cleaning</h1>
+          <p>
+            Enjoy the ultimately washed, dried, folded clothes, ensuring utmost quality
+          </p>
+        </div>
+        <div class="card">
+          <img src="services\dry cleaning.png" alt="" />
+          <h1>Curtain Washing</h1>
+          <p>
+            You can enjoy the elegance of your clothes through our dry cleaning service.
+          </p>
+        </div>
+        <div class="card">
+          <img src="services\premium washing.png" alt="" />
+          <h1>Premium Washing</h1>
+          <p>
+            Get your clothes washed quickly with our premium wash service.
+          </p>
+        </div>
+      </div>
+
+      <h2><a href="#booking">Book Now</a></h2><br><br>
+    </div>
+  </div>
+  <!-- Service Ends -->
+
+
+
+
+
+
+
+  <!-- Our Work Starts -->
+
+  <div class="why main-spacing" id="work">
+    <div class="container">
+      <h1>Our Work</h1>
+      <p>
+        You can get your clothes washed with these ways!!!
+      </p>
+
+      <div class="row-spacing">
+        <div class="row">
+          <div class="card">
+            <img src="work\schedule.png" alt="" style="width: 101px; height: auto;" />
+            <!-- Adjust the width as needed -->
+            <h1>Schedule</h1>
+            <p>
+              First, Schedule your laundry to your preferable time right from where you are
+            </p>
+          </div>
+          <div class="card">
+            <img src="work\pickup.png" alt="" />
+            <h1>Pickup</h1>
+            <p>
+              Second, Our lovable team will pick your clothes right from your location easily
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card">
+            <img src="work\track.png" alt="" style="width: 101px; height: auto;" />
+            <h1>Track</h1>
+            <p>
+              Third, You can track your laundry delivery via your mobile without any hassle
+            </p>
+          </div>
+          <div class="card">
+            <img src="work\delivery.png" alt="" />
+            <h1>Delivery</h1>
+            <p>
+              Fourth, We will deliver your clothes, you can enjoy your time without worries
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our Work Ends -->
+
+
+
+
+
+  <?php if (isset($_SESSION['error'])): ?>
+  <div class="error">
+      <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+  </div>
+<?php endif; ?>
+
+
+  <!-- Booking Form Starts -->
+  <div class="contact main-spacing" id="booking">
+    <div class="container">
+      <h1>Book Your Laundry</h1>
+      <form action="index.php" method="post" id="bookingForm" onsubmit="return validateForm()">
+
+        <input type="text" id="name" name="name" placeholder="Full name" required />
+        <input type="email" id="email" name="email" placeholder="johndoe@mail.com" required />
+        <input type="tel" id="number" name="number" placeholder="Phone number" required />
+        <input type="text" id="address" name="address" placeholder="Address" required />
+        <input type="text" id="pincode" name="pincode" placeholder="Pincode" required />
+
+        <!-- Laundry Shop Radio Button Selection -->
+        <label>Select Laundry Shop:</label>
+        <div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="drops" name="laundryShop" value="Drops" required>
+          <label for="drops">Drops</label><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="tumbledry" name="laundryShop" value="Tumbledry" required>
+          <label for="tumbledry">Tumbledry</label><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" id="fabrico" name="laundryShop" value="Fabrico" required>
+          <label for="fabrico">Fabrico</label><br>
+        </div>
+
+        <!-- Services Checkbox Selection -->
+        <label>Select Services:</label>
+        <div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="laundry" name="services[]" value="Laundry">
+          <label for="laundry">Laundry</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="checkbox" id="drycleaning" name="services[]" value="Dry Cleaning">
+          <label for="drycleaning">Dry Cleaning</label><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="premium" name="services[]" value="Premium Washing">
+          <label for="premium">Premium Washing</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="checkbox" id="shoe" name="services[]" value="Shoe Cleaning">
+          <label for="shoe">Shoe Cleaning</label><br>
+        </div>
+
+        <textarea class="additional-notes" id="notes" name="notes" placeholder="Additional Notes" required></textarea>
+        <input type="submit" value="Submit" onclick = "alert('Your order was placed successfully!')" id="submit">
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    function validateForm() {
+      // Validate phone number
+      const phoneNumber = document.getElementById('number').value;
+      const phoneRegex = /^[0-9]{10}$/; // Only allows exactly 10 digits
+      if (!phoneRegex.test(phoneNumber)) {
+        alert("Please enter a valid 10-digit phone number without alphabets or special characters.");
+        return false; // Prevent form submission
+      }
+
+      // Validate email
+      const email = document.getElementById('email').value;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email format validation
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false; // Prevent form submission
+      }
+
+      // Validate pincode
+      const pincode = document.getElementById('pincode').value;
+      const pincodeRegex = /^[0-9]{6}$/; // Only allows exactly 6 digits
+      if (!pincodeRegex.test(pincode)) {
+        alert("Please enter a valid 6-digit pincode.");
+        return false; // Prevent form submission
+      }
+
+      // Validate laundry shop selection
+      const laundryShop = document.querySelector('input[name="laundryShop"]:checked');
+      if (!laundryShop) {
+        alert("Please select a laundry shop.");
+        return false; // Prevent form submission
+      }
+
+      // Validate services selection (at least one checkbox)
+      const services = document.querySelectorAll('input[name="services[]"]:checked');
+      if (services.length === 0) {
+        alert("Please select at least one service.");
+        return false; // Prevent form submission
+      }
+
+      return true; // If all validations pass, allow form submission
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+
+  <!-- Contact Us Starts -->
+
+  <div class="contact-us main-spacing" style="background-color: white; color: black; text-align: center;" id="contact">
+    <div class="container">
+      <h1 style="font-size: 2em;"><b>Contact Us</b></h1><br>
+      <h5 style="font-size: 1.5em;">Feel free to ask any queries</h5><br><br>
+      <div class="contact-info" style="display: flex; justify-content: space-around;">
+        <div class="contact-item">
+          <i class="fas fa-phone-alt" style="font-size: 40px;"></i><br>
+          <span style="font-size: 1.2em;">
+            <h3>93455-12491</h3>
+          </span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope" style="font-size: 40px;"></i><br>
+          <span style="font-size: 1.2em;">
+            <h3>thehorde.is3@gmail.com</h3>
+          </span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt" style="font-size: 40px;"></i><br>
+          <span style="font-size: 1.2em;">
+            <h3>Saravanampatti, Coimbatore, 641035</h3>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contact Us Ends -->
+
+
+
+
+
+  <!-- Footer Starts -->
+  <footer class="main-spacing" style="display: flex; justify-content: space-between; align-items: center;">
+    <!-- Left Section: Logo, Company Name, and Tagline -->
+    <div class="footer-left" style="display: flex; align-items: center;">
+      <img src="logo.png" alt="Logo" style="width: 100px; height: auto;">
+      <div style="margin-left: 10px;">
+        <h1 style="font-weight: bold; font-size: 40px; margin: 0; color: white;">IS3</h1> <!-- Company Name -->
+        <p style="margin: 0;">WE CARE EVERY FABRIC</p> <!-- Tagline -->
+      </div>
+    </div>
+
+    <!-- Center Section: Navigation -->
+    <div class="footer-center">
+      <ul>
+        <li><a href="#home" style="color: white;">Home</a></li>
+        <li><a href="#service" style="color: white;">Services</a></li>
+        <li><a href="#about" style="color: white;">About Us</a></li>
+        <li><a href="#booking" style="color: white;">Book Now</a></li>
+        <li><a href="#contact" style="color: white;">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Right Section: Contact Information -->
+    <div class="footer-right">
+      <p><i class="fas fa-phone">&nbsp;</i> 93455-12491</p><br>
+      <p><i class="fas fa-envelope">&nbsp;</i>thehorde.is3@gmail.com</p><br>
+      <p><i class="fas fa-map-marker-alt">&nbsp;</i>Saravanampatti, Coimbatore, 641035</p>
+    </div>
+  </footer>
+  <!-- Footer Ends -->
+
+
+
+  <script src="script.js"></script>
+
+  <!-- Add Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js"></script>
+
+  <script>
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "your-api-key",
+      authDomain: "your-auth-domain",
+      projectId: "your-project-id",
+      storageBucket: "your-storage-bucket",
+      messagingSenderId: "your-messaging-sender-id",
+      appId: "your-app-id",
+      measurementId: "your-measurement-id"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    const db = firebase.firestore();
+
+
+    document.getElementById('bookingForm').addEventListener('submit', submitForm);
+
+    function submitForm(e) {
+      e.preventDefault();
+
+      // Get values from form fields
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+      let number = document.getElementById('number').value;
+      let address = document.getElementById('address').value;
+      let pincode = document.getElementById('pincode').value;
+      let notes = document.getElementById('notes').value;
+
+      console.log("Captured Data:", { name, email, number, address, pincode, notes });
+
+      // Save data to Firestore
+      db.collection("laundryBookings").add({
+        name: name,
+        email: email,
+        number: number,
+        address: address,
+        pincode: pincode,
+        notes: notes
+      })
+        .then(() => {
+          console.log("Booking successfully added to Firestore");
+          alert("Booking has been submitted successfully!");
+          document.getElementById('bookingForm').reset();
+        })
+        .catch((error) => {
+          console.error("Error adding booking to Firestore: ", error);
+        });
+    }
+    ''
+
+
+  </script>
+</body>
+
+</html>
