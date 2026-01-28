@@ -52,7 +52,7 @@ Laundry-Service-App/
 2. **Move the Project**  
    Place the project folder inside:
 
-C:\xampp\htdocs\Laundry-Service-App
+   C:\xampp\htdocs\Laundry-Service-App
 
 
 3. **Start the Server**  
