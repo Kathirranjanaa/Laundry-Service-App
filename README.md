@@ -1,6 +1,6 @@
 # 👕 Laundry Service Booking Web Application
 
-A full-stack web application that allows users to register, log in, browse laundry shops, select services, and book laundry pickups.
+A full-stack web application that allows users to register, log in, browse laundry shops, select services, and book laundry pickups.  
 The project is hosted locally using XAMPP with data stored in SQLite3.
 
 ---
@@ -18,29 +18,29 @@ The project is hosted locally using XAMPP with data stored in SQLite3.
 
 ## 🛠 Tech Stack
 
-Frontend: HTML, CSS, JavaScript  
-Backend: PHP, Python  
-Database: SQLite3  
-Server: XAMPP (Apache)
+- Frontend: HTML, CSS, JavaScript
+- Backend: PHP, Python
+- Database: SQLite3
+- Server: XAMPP (Apache)
 
 ---
 
-## 📂 Project Structure
+## 🚀 Running the Project Locally
 
-Laundry-Service-App/
-├── laundry shops/        # Shop images
-├── services/             # Service assets
-├── work/                 # Workflow images
-├── index.html
-├── index.php
-├── style.css
-├── script.js
-├── login.php
-├── register.php
-├── send_otp.php
-├── display.php
-├── laundry.db
-└── README.md
+Laundry-Service-App/  
+├── laundry shops/ &nbsp;&nbsp;&nbsp;# Shop images  
+├── services/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Service assets  
+├── work/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Workflow images  
+├── index.html  
+├── index.php  
+├── style.css  
+├── script.js  
+├── login.php  
+├── register.php  
+├── send_otp.php  
+├── display.php  
+├── laundry.db  
+└── README.md  
 
 ---
 
