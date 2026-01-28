@@ -1,6 +1,6 @@
-# 👕 Laundry Service Booking Web Application (IS3)
+# 👕 Laundry Service Booking Web Application
 
-A full-stack web application that allows users to register, log in, browse laundry shops, select services, and book laundry pickups.  
+A full-stack web application that allows users to register, log in, browse laundry shops, select services, and book laundry pickups.
 The project is hosted locally using XAMPP with data stored in SQLite3.
 
 ---
@@ -18,16 +18,15 @@ The project is hosted locally using XAMPP with data stored in SQLite3.
 
 ## 🛠 Tech Stack
 
-**Frontend:** HTML, CSS, JavaScript  
-**Backend:** PHP, Python  
-**Database:** SQLite3  
-**Server:** XAMPP (Apache)
+Frontend: HTML, CSS, JavaScript  
+Backend: PHP, Python  
+Database: SQLite3  
+Server: XAMPP (Apache)
 
 ---
 
 ## 📂 Project Structure
 
-```text
 Laundry-Service-App/
 ├── laundry shops/        # Shop images
 ├── services/             # Service assets
@@ -42,25 +41,37 @@ Laundry-Service-App/
 ├── display.php
 ├── laundry.db
 └── README.md
-🚀 Running the Project Locally
-Install XAMPP
 
-Move the project folder to:
+---
+
+## 🚀 Running the Project Locally
+
+1. **Install XAMPP**  
+   Download and install XAMPP from the official website.
+
+2. **Move the Project**  
+   Place the project folder inside:
 
 C:\xampp\htdocs\Laundry-Service-App
-Start Apache from XAMPP Control Panel
 
-Initialize the database:
 
-http://localhost/Laundry-Service-App/create_database.php
-http://localhost/Laundry-Service-App/create_users_table.php
-Open the application:
+3. **Start the Server**  
+Open the XAMPP Control Panel and start **Apache**.
 
-http://localhost/Laundry-Service-App/index.html
-👤 Author
-Kathir Ranjanaa S.
-🔗 https://www.linkedin.com/in/kathir-ranjanaa-s/
-📧 kathirranjanaas@gmail.com
+4. **Initialize the Database**  
+Run the following URLs in your browser:
+
+http://localhost/Laundry-Service-App/create_database.php  
+http://localhost/Laundry-Service-App/create_users_table.php  
+
+5. **Launch the Application**  
+Open: http://localhost/Laundry-Service-App/index.html
 
 
 ---
+
+## 👤 Author
+
+**Kathir Ranjanaa S.**  
+🔗 LinkedIn: https://www.linkedin.com/in/kathir-ranjanaa-s/  
+📧 Email: kathirranjanaas@gmail.com
