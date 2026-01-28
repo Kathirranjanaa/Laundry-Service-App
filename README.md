@@ -61,8 +61,8 @@ Open the XAMPP Control Panel and start **Apache**.
 4. **Initialize the Database**  
 Run the following URLs in your browser:
 
-http://localhost/Laundry-Service-App/create_database.php  
-http://localhost/Laundry-Service-App/create_users_table.php  
+   http://localhost/Laundry-Service-App/create_database.php  
+   http://localhost/Laundry-Service-App/create_users_table.php  
 
 5. **Launch the Application**  
 Open: http://localhost/Laundry-Service-App/index.html
