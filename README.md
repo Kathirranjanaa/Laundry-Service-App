@@ -1,14 +1,14 @@
-# Laundry Service Booking Web Application (IS3)
+# 👕 Laundry Service Booking Web Application (IS3)
 
-A full-stack web application that enables users to register, log in, browse laundry shops, select services, and book laundry pickups.
-The application runs locally using XAMPP with data stored in SQLite3.
+A full-stack web application that allows users to register, log in, browse laundry shops, select services, and book laundry pickups.  
+The project is hosted locally using XAMPP with data stored in SQLite3.
 
 ---
 
-## Features
+## ✨ Features
 
-- User registration and authentication
-- OTP-based verification
+- User registration and login
+- OTP-based authentication
 - Laundry shop and service selection
 - Pickup and delivery workflow
 - Admin-side data viewing
@@ -16,21 +16,22 @@ The application runs locally using XAMPP with data stored in SQLite3.
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
-Frontend: HTML, CSS, JavaScript  
-Backend: PHP, Python  
-Database: SQLite3  
-Server: XAMPP (Apache)
+**Frontend:** HTML, CSS, JavaScript  
+**Backend:** PHP, Python  
+**Database:** SQLite3  
+**Server:** XAMPP (Apache)
 
 ---
 
-## Project Structure
+## 📂 Project Structure
 
+```text
 Laundry-Service-App/
-├── laundry shops/
-├── services/
-├── work/
+├── laundry shops/        # Shop images
+├── services/             # Service assets
+├── work/                 # Workflow images
 ├── index.html
 ├── index.php
 ├── style.css
@@ -41,32 +42,25 @@ Laundry-Service-App/
 ├── display.php
 ├── laundry.db
 └── README.md
-
----
-
-## Running Locally
-
+🚀 Running the Project Locally
 Install XAMPP
 
 Move the project folder to:
 
 C:\xampp\htdocs\Laundry-Service-App
-
 Start Apache from XAMPP Control Panel
 
-Initialize the database by opening the following URLs in the browser:
+Initialize the database:
 
-http://localhost/Laundry-Service-App/create_database.php  
-http://localhost/Laundry-Service-App/create_users_table.php  
-
+http://localhost/Laundry-Service-App/create_database.php
+http://localhost/Laundry-Service-App/create_users_table.php
 Open the application:
 
 http://localhost/Laundry-Service-App/index.html
+👤 Author
+Kathir Ranjanaa S.
+🔗 https://www.linkedin.com/in/kathir-ranjanaa-s/
+📧 kathirranjanaas@gmail.com
+
 
 ---
-
-## Author
-
-Kathir Ranjanaa S.  
-LinkedIn: https://www.linkedin.com/in/kathir-ranjanaa-s/  
-Email: kathirranjanaas@gmail.com
